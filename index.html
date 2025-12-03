@@ -6,6 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Detail City Car Studio – Premium auto detailing in Impian Emas, Johor and Kuala Lumpur. WhatsApp booking, Instagram, Facebook, TikTok and branch locations." />
 
+  <!-- Favicon (replace favicon.ico with your own logo file if you want) -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:title" content="Detail City Car Studio | Johor & KL" />
+  <meta property="og:description" content="Premium auto detailing studio in Impian Emas, Johor and Kuala Lumpur. Tap to book via WhatsApp, view socials and locations." />
+  <!-- After you know your final URL, replace with that GitHub Pages link -->
+  <meta property="og:url" content="https://your-domain-or-github-pages-url-here" />
+  <!-- Optional: Once you upload a banner image, update this -->
+  <meta property="og:image" content="https://your-domain-or-github-pages-url-here/preview.jpg" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Detail City Car Studio | Johor & KL" />
+  <meta name="twitter:description" content="Premium auto detailing studio in Impian Emas, Johor and Kuala Lumpur. Tap to book via WhatsApp, view socials and locations." />
+  <meta name="twitter:image" content="https://your-domain-or-github-pages-url-here/preview.jpg" />
+
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -24,6 +42,16 @@
       --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.85);
     }
 
+    /* Light theme overrides */
+    :root[data-theme="light"] {
+      --bg: #f5f5f8;
+      --card-bg: #ffffff;
+      --text-main: #151520;
+      --text-muted: #666a7a;
+      --border-soft: rgba(0, 0, 0, 0.08);
+      --shadow-soft: 0 16px 30px rgba(0, 0, 0, 0.12);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -31,12 +59,13 @@
     }
 
     body {
-      background: radial-gradient(circle at top, #1b1b25 0, #050508 55%);
+      background: radial-gradient(circle at top, #1b1b25 0, var(--bg) 55%);
       font-family: "Poppins", sans-serif;
       color: var(--text-main);
       padding: 30px 16px 50px;
       display: flex;
       justify-content: center;
+      transition: background 0.25s ease, color 0.25s ease;
     }
 
     .wrapper {
@@ -49,12 +78,33 @@
       padding: 2px;
       border-radius: 26px;
       box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
     }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(212,175,55,0.18), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(212,175,55,0.12), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
     .card-inner {
+      position: relative;
       background: radial-gradient(circle at top, #151520 0, #050508 65%);
       border-radius: 24px;
       padding: 24px 18px 28px;
       border: 1px solid var(--border-soft);
+      z-index: 1;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    :root[data-theme="light"] .card-inner {
+      background: radial-gradient(circle at top, #ffffff 0, #ececf5 70%);
     }
 
     /* Header */
@@ -76,6 +126,20 @@
       justify-content: center;
       font-size: 18px;
       color: #111;
+      position: relative;
+      overflow: hidden;
+      animation: logoGlow 3.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoGlow {
+      0% {
+        box-shadow: 0 0 10px rgba(212,175,55,0.3);
+        transform: translateY(0);
+      }
+      100% {
+        box-shadow: 0 0 26px rgba(212,175,55,0.9);
+        transform: translateY(-1px);
+      }
     }
 
     .title h1 {
@@ -88,8 +152,15 @@
       color: var(--text-muted);
     }
 
-    .chip {
+    .header-right {
       margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .chip {
       padding: 6px 12px;
       background: rgba(0,0,0,0.55);
       border-radius: 999px;
@@ -98,6 +169,38 @@
       letter-spacing: .16em;
       color: var(--accent);
       border: 1px solid rgba(212,175,55,0.5);
+      white-space: nowrap;
+    }
+
+    :root[data-theme="light"] .chip {
+      background: rgba(255,255,255,0.8);
+    }
+
+    .theme-toggle {
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      padding: 4px 9px;
+      font-size: 11px;
+      background: rgba(0,0,0,0.4);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .theme-toggle i {
+      font-size: 12px;
+    }
+
+    :root[data-theme="light"] .theme-toggle {
+      background: rgba(255,255,255,0.9);
+    }
+
+    .theme-toggle:hover {
+      border-color: rgba(212,175,55,0.7);
+      color: var(--accent);
     }
 
     .divider {
@@ -159,6 +262,11 @@
       box-shadow: 0 14px 26px rgba(0,0,0,0.8);
     }
 
+    .btn-small {
+      padding: 10px 12px;
+      font-size: 12px;
+    }
+
     .section-title {
       margin: 18px 0 6px;
       font-size: 12px;
@@ -174,11 +282,6 @@
       gap: 10px;
     }
 
-    .btn-small {
-      padding: 10px 12px;
-      font-size: 12px;
-    }
-
     /* Address Blocks */
     .address {
       background: var(--card-bg);
@@ -186,6 +289,7 @@
       border: 1px solid var(--border-soft);
       padding: 12px;
       margin-bottom: 10px;
+      transition: background 0.25s ease, border-color 0.25s ease;
     }
     .address h3 {
       color: var(--accent);
@@ -200,6 +304,39 @@
       margin-bottom: 8px;
     }
 
+    /* QR Section */
+    .qr-section {
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    .qr-wrapper {
+      margin-top: 8px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px dashed var(--border-soft);
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    :root[data-theme="light"] .qr-wrapper {
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .qr-wrapper img {
+      width: 150px;
+      height: 150px;
+      border-radius: 12px;
+    }
+
+    .qr-wrapper span {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
     /* Footer Note */
     .footer {
       margin-top: 16px;
@@ -209,6 +346,15 @@
     }
     .footer span {
       color: var(--accent);
+    }
+
+    @media (max-width: 380px) {
+      .title h1 {
+        font-size: 16px;
+      }
+      .card-inner {
+        padding: 20px 14px 24px;
+      }
     }
   </style>
 </head>
@@ -226,7 +372,13 @@
           <h1>Detail City Car Studio</h1>
           <div class="tagline">Premium Auto Detailing • Johor & KL</div>
         </div>
-        <div class="chip">NFC TAP</div>
+        <div class="header-right">
+          <button class="theme-toggle" id="themeToggle">
+            <i class="fa-regular fa-moon"></i>
+            <span id="themeLabel">Dark</span>
+          </button>
+          <div class="chip">NFC TAP</div>
+        </div>
       </div>
 
       <div class="divider"></div>
@@ -288,6 +440,15 @@
         </a>
       </div>
 
+      <!-- QR Code Section -->
+      <div class="qr-section">
+        <div class="section-title">Quick Access QR</div>
+        <div class="qr-wrapper">
+          <img id="qrImage" alt="QR code to this page" />
+          <span>Scan to open this page directly.</span>
+        </div>
+      </div>
+
       <!-- Footer -->
       <div class="footer">
         Tap • Book • Shine <br>
@@ -297,5 +458,42 @@
     </div>
   </div>
 </div>
+
+<script>
+  // Theme toggle with localStorage
+  (function () {
+    const root = document.documentElement;
+    const toggle = document.getElementById("themeToggle");
+    const label = document.getElementById("themeLabel");
+
+    const savedTheme = localStorage.getItem("dc-theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+      root.setAttribute("data-theme", savedTheme);
+      label.textContent = savedTheme === "light" ? "Light" : "Dark";
+    } else {
+      // Default to dark
+      root.setAttribute("data-theme", "dark");
+      label.textContent = "Dark";
+    }
+
+    toggle.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+      const next = current === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("dc-theme", next);
+      label.textContent = next === "light" ? "Light" : "Dark";
+    });
+  })();
+
+  // Auto-generate QR code for the current page URL
+  (function () {
+    const img = document.getElementById("qrImage");
+    if (!img) return;
+    const url = window.location.href;
+    const apiUrl = "https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=" + encodeURIComponent(url);
+    img.src = apiUrl;
+  })();
+</script>
+
 </body>
 </html>
