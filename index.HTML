@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Detail City Car Studio | Johor & KL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Detail City Car Studio – Premium auto detailing in Impian Emas, Johor and Kuala Lumpur. WhatsApp booking, Instagram, Facebook, TikTok and branch locations." />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #050508;
+      --card-bg: #111117;
+      --accent: #d4af37;
+      --accent-soft: rgba(212, 175, 55, 0.15);
+      --text-main: #f7f7f7;
+      --text-muted: #b8b8c3;
+      --border-soft: rgba(255, 255, 255, 0.06);
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.85);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #1b1b25 0, #050508 55%);
+      font-family: "Poppins", sans-serif;
+      color: var(--text-main);
+      padding: 30px 16px 50px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 460px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(0,0,0,0.7));
+      padding: 2px;
+      border-radius: 26px;
+      box-shadow: var(--shadow-soft);
+    }
+    .card-inner {
+      background: radial-gradient(circle at top, #151520 0, #050508 65%);
+      border-radius: 24px;
+      padding: 24px 18px 28px;
+      border: 1px solid var(--border-soft);
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      background: radial-gradient(circle at 25% 0%, #fff 0%, #f4e4ac 40%, #7f5b12 75%, #1e1708 100%);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #111;
+    }
+
+    .title h1 {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+    .tagline {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .chip {
+      margin-left: auto;
+      padding: 6px 12px;
+      background: rgba(0,0,0,0.55);
+      border-radius: 999px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--accent);
+      border: 1px solid rgba(212,175,55,0.5);
+    }
+
+    .divider {
+      height: 1px;
+      margin: 18px 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    }
+
+    .highlight {
+      padding: 12px;
+      background: linear-gradient(135deg, rgba(212,175,55,0.18), rgba(0,0,0,0.85));
+      border-radius: 20px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(212,175,55,0.35);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .highlight i {
+      font-size: 20px;
+      color: var(--accent);
+    }
+    .highlight p {
+      font-size: 13px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: var(--text-main);
+      border: 1px solid transparent;
+      transition: .13s ease;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .btn i {
+      margin-right: 8px;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(212,175,55,0.5);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.9);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f3d26a, #b8861a);
+      color: #111;
+      font-weight: 600;
+      border: none;
+      box-shadow: 0 14px 26px rgba(0,0,0,0.8);
+    }
+
+    .section-title {
+      margin: 18px 0 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+    }
+
+    /* Social Grid */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .btn-small {
+      padding: 10px 12px;
+      font-size: 12px;
+    }
+
+    /* Address Blocks */
+    .address {
+      background: var(--card-bg);
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    .address h3 {
+      color: var(--accent);
+      font-size: 13px;
+      margin-bottom: 3px;
+      font-weight: 500;
+    }
+    .address p {
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    /* Footer Note */
+    .footer {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .footer span {
+      color: var(--accent);
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrapper">
+
+  <div class="card">
+    <div class="card-inner">
+
+      <!-- Header -->
+      <div class="header">
+        <div class="logo">DC</div>
+        <div class="title">
+          <h1>Detail City Car Studio</h1>
+          <div class="tagline">Premium Auto Detailing • Johor & KL</div>
+        </div>
+        <div class="chip">NFC TAP</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Highlight -->
+      <div class="highlight">
+        <i class="fa-solid fa-comment-dots"></i>
+        <p><strong>Tap to book your detailing session.</strong><br>WhatsApp us for pricing & appointments.</p>
+      </div>
+
+      <!-- Main Buttons -->
+      <a class="btn btn-primary" href="https://wa.me/message/444HENG6ID4ZD1" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp Booking (Johor & KL)
+      </a>
+
+      <a class="btn" href="tel:01111472671">
+        <i class="fa-solid fa-phone"></i> Call: 011-11472671
+      </a>
+
+      <!-- Social Section -->
+      <div class="section-title">Social Media</div>
+
+      <div class="social-grid">
+        <a class="btn btn-small" href="https://www.instagram.com/detailcity_car_studio?igsh=ZnBnN3A1M2F6ZTV5" target="_blank">
+          <i class="fa-brands fa-instagram"></i> Johor IG
+        </a>
+        <a class="btn btn-small" href="https://www.instagram.com/detailcitycarstudiokualalumpur?igsh=MXg3NnpoN2lrMmNtdw==" target="_blank">
+          <i class="fa-brands fa-instagram"></i> KL IG
+        </a>
+
+        <a class="btn btn-small" href="https://www.facebook.com/share/1BtioyHdfw/?mibextid=wwXIfr" target="_blank">
+          <i class="fa-brands fa-facebook"></i> Johor FB
+        </a>
+        <a class="btn btn-small" href="https://www.facebook.com/share/17p97so9Ei/?mibextid=wwXIfr" target="_blank">
+          <i class="fa-brands fa-facebook"></i> KL FB
+        </a>
+      </div>
+
+      <a class="btn" href="https://www.tiktok.com/@detailcitycarstudio?_r=1&_t=ZS-91ukMqpp51h" target="_blank">
+        <i class="fa-brands fa-tiktok"></i> TikTok
+      </a>
+
+      <!-- Locations -->
+      <div class="section-title">Our Locations</div>
+
+      <div class="address">
+        <h3><i class="fa-solid fa-location-dot"></i> Johor – Impian Emas Branch</h3>
+        <p>235, Jalan Impian Emas 22,<br>Taman Impian Emas,<br>81300 Skudai, Johor.</p>
+        <a class="btn btn-small" href="https://maps.google.com/?q=235+Jalan+Impian+Emas+22+Skudai+Johor" target="_blank">
+          <i class="fa-solid fa-map"></i> Open in Google Maps
+        </a>
+      </div>
+
+      <div class="address">
+        <h3><i class="fa-solid fa-location-dot"></i> Kuala Lumpur Branch</h3>
+        <p>4, Batu 5, Jalan Sultan Azlan Shah,<br>Kampung Batu,<br>51200 Kuala Lumpur.</p>
+        <a class="btn btn-small" href="https://maps.google.com/?q=4+Batu+5+Jalan+Sultan+Azlan+Shah+Kuala+Lumpur" target="_blank">
+          <i class="fa-solid fa-map"></i> Open in Google Maps
+        </a>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        Tap • Book • Shine <br>
+        <span>Detail City Car Studio</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
