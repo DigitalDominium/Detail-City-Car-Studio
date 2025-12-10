@@ -241,6 +241,7 @@
       border: 1px solid transparent;
       transition: .13s ease;
       background: rgba(0,0,0,0.5);
+      cursor: pointer;
     }
 
     .btn i {
@@ -394,6 +395,11 @@
         <i class="fa-brands fa-whatsapp"></i> WhatsApp Booking (Johor & KL)
       </a>
 
+      <!-- New Official Website Button -->
+      <a class="btn btn-primary" href="https://detailcity.com.my" target="_blank">
+        <i class="fa-solid fa-globe"></i> Visit Our Website
+      </a>
+
       <a class="btn" href="tel:01111472671">
         <i class="fa-solid fa-phone"></i> Call: 011-11472671
       </a>
@@ -427,17 +433,23 @@
       <div class="address">
         <h3><i class="fa-solid fa-location-dot"></i> Johor – Impian Emas Branch</h3>
         <p>235, Jalan Impian Emas 22,<br>Taman Impian Emas,<br>81300 Skudai, Johor.</p>
-        <a class="btn btn-small" href="https://maps.google.com/?q=235+Jalan+Impian+Emas+22+Skudai+Johor" target="_blank">
-          <i class="fa-solid fa-map"></i> Open in Google Maps
-        </a>
+        <button
+          type="button"
+          class="btn btn-small"
+          onclick="openMapChooser('235, Jalan Impian Emas 22, Taman Impian Emas, 81300 Skudai, Johor')">
+          <i class="fa-solid fa-map"></i> Open Maps
+        </button>
       </div>
 
       <div class="address">
         <h3><i class="fa-solid fa-location-dot"></i> Kuala Lumpur Branch</h3>
         <p>4, Batu 5, Jalan Sultan Azlan Shah,<br>Kampung Batu,<br>51200 Kuala Lumpur.</p>
-        <a class="btn btn-small" href="https://maps.google.com/?q=4+Batu+5+Jalan+Sultan+Azlan+Shah+Kuala+Lumpur" target="_blank">
-          <i class="fa-solid fa-map"></i> Open in Google Maps
-        </a>
+        <button
+          type="button"
+          class="btn btn-small"
+          onclick="openMapChooser('4, Batu 5, Jalan Sultan Azlan Shah, Kampung Batu, 51200 Kuala Lumpur')">
+          <i class="fa-solid fa-map"></i> Open Maps
+        </button>
       </div>
 
       <!-- QR Code Section -->
@@ -456,6 +468,40 @@
       </div>
 
     </div>
+  </div>
+</div>
+
+<!-- MAP CHOOSER MODAL -->
+<div id="mapModal" style="
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+">
+  <div style="
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 18px;
+    width: 280px;
+    border: 1px solid var(--border-soft);
+    text-align: center;
+  ">
+    <h3 style="margin-bottom: 12px; color: var(--accent); font-size:14px">
+      Open navigation with:
+    </h3>
+
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <a id="openGoogle" class="btn btn-small" style="margin:0">Google Maps</a>
+      <a id="openApple" class="btn btn-small" style="margin:0">Apple Maps</a>
+      <a id="openWaze" class="btn btn-small" style="margin:0">Waze</a>
+    </div>
+
+    <button onclick="closeMapModal()" class="btn btn-small" style="margin-top:12px; opacity:0.7">
+      Cancel
+    </button>
   </div>
 </div>
 
@@ -493,7 +539,30 @@
     const apiUrl = "https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=" + encodeURIComponent(url);
     img.src = apiUrl;
   })();
+
+  // Map chooser logic
+  function openMapChooser(address) {
+    const modal = document.getElementById("mapModal");
+    const encoded = encodeURIComponent(address);
+
+    // Deep Links for different apps
+    document.getElementById("openGoogle").href =
+      "https://www.google.com/maps/search/?api=1&query=" + encoded;
+
+    document.getElementById("openApple").href =
+      "maps://?q=" + encoded; // iPhone Apple Maps
+
+    document.getElementById("openWaze").href =
+      "https://waze.com/ul?q=" + encoded;
+
+    modal.style.display = "flex";
+  }
+
+  function closeMapModal() {
+    document.getElementById("mapModal").style.display = "none";
+  }
 </script>
 
 </body>
 </html>
+
