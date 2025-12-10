@@ -6,28 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Detail City Car Studio – Premium auto detailing in Impian Emas, Johor and Kuala Lumpur. WhatsApp booking, Instagram, Facebook, TikTok and branch locations." />
 
-  <!-- Favicon (replace favicon.ico with your own logo file if you want) -->
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-  <!-- Open Graph / Social Preview -->
   <meta property="og:title" content="Detail City Car Studio | Johor & KL" />
-  <meta property="og:description" content="Premium auto detailing studio in Impian Emas, Johor and Kuala Lumpur. Tap to book via WhatsApp, view socials and locations." />
-  <!-- After you know your final URL, replace with that GitHub Pages link -->
-  <meta property="og:url" content="https://your-domain-or-github-pages-url-here" />
-  <!-- Optional: Once you upload a banner image, update this -->
-  <meta property="og:image" content="https://your-domain-or-github-pages-url-here/preview.jpg" />
+  <meta property="og:description" content="Premium auto detailing studio in Johor and Kuala Lumpur." />
   <meta property="og:type" content="website" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Detail City Car Studio | Johor & KL" />
-  <meta name="twitter:description" content="Premium auto detailing studio in Impian Emas, Johor and Kuala Lumpur. Tap to book via WhatsApp, view socials and locations." />
-  <meta name="twitter:image" content="https://your-domain-or-github-pages-url-here/preview.jpg" />
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -35,14 +20,12 @@
       --bg: #050508;
       --card-bg: #111117;
       --accent: #d4af37;
-      --accent-soft: rgba(212, 175, 55, 0.15);
       --text-main: #f7f7f7;
       --text-muted: #b8b8c3;
       --border-soft: rgba(255, 255, 255, 0.06);
       --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.85);
     }
 
-    /* Light theme overrides */
     :root[data-theme="light"] {
       --bg: #f5f5f8;
       --card-bg: #ffffff;
@@ -52,11 +35,7 @@
       --shadow-soft: 0 16px 30px rgba(0, 0, 0, 0.12);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background: radial-gradient(circle at top, #1b1b25 0, var(--bg) 55%);
@@ -65,13 +44,10 @@
       padding: 30px 16px 50px;
       display: flex;
       justify-content: center;
-      transition: background 0.25s ease, color 0.25s ease;
+      transition: 0.25s ease;
     }
 
-    .wrapper {
-      width: 100%;
-      max-width: 460px;
-    }
+    .wrapper { width: 100%; max-width: 460px; }
 
     .card {
       background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(0,0,0,0.7));
@@ -82,32 +58,41 @@
       overflow: hidden;
     }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 0 0, rgba(212,175,55,0.18), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(212,175,55,0.12), transparent 55%);
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
     .card-inner {
-      position: relative;
       background: radial-gradient(circle at top, #151520 0, #050508 65%);
       border-radius: 24px;
       padding: 24px 18px 28px;
       border: 1px solid var(--border-soft);
-      z-index: 1;
-      transition: background 0.25s ease, border-color 0.25s ease;
+      transition: 0.25s ease;
+      position: relative;
     }
 
-    :root[data-theme="light"] .card-inner {
-      background: radial-gradient(circle at top, #ffffff 0, #ececf5 70%);
+    /* ⭐ NEW LOGO BLOCK ⭐ */
+    .logo {
+      width: 115px;
+      height: 48px;
+      border-radius: 14px;
+      background: radial-gradient(circle at center, rgba(212,175,55,0.25), rgba(0,0,0,0.6));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      overflow: hidden;
+      animation: logoGlow 3s ease-in-out infinite alternate;
     }
 
-    /* Header */
+    .logo-img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    @keyframes logoGlow {
+      0% { box-shadow: 0 0 10px rgba(212,175,55,0.25); }
+      100% { box-shadow: 0 0 30px rgba(212,175,55,0.9); }
+    }
+
     .header {
       display: flex;
       align-items: center;
@@ -115,42 +100,9 @@
       margin-bottom: 16px;
     }
 
-    .logo {
-      width: 54px;
-      height: 54px;
-      border-radius: 18px;
-      background: radial-gradient(circle at 25% 0%, #fff 0%, #f4e4ac 40%, #7f5b12 75%, #1e1708 100%);
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      color: #111;
-      position: relative;
-      overflow: hidden;
-      animation: logoGlow 3.2s ease-in-out infinite alternate;
-    }
+    .title h1 { font-size: 18px; font-weight: 600; }
 
-    @keyframes logoGlow {
-      0% {
-        box-shadow: 0 0 10px rgba(212,175,55,0.3);
-        transform: translateY(0);
-      }
-      100% {
-        box-shadow: 0 0 26px rgba(212,175,55,0.9);
-        transform: translateY(-1px);
-      }
-    }
-
-    .title h1 {
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: .04em;
-    }
-    .tagline {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
+    .tagline { font-size: 12px; color: var(--text-muted); }
 
     .header-right {
       margin-left: auto;
@@ -165,15 +117,9 @@
       background: rgba(0,0,0,0.55);
       border-radius: 999px;
       font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .16em;
       color: var(--accent);
       border: 1px solid rgba(212,175,55,0.5);
-      white-space: nowrap;
-    }
-
-    :root[data-theme="light"] .chip {
-      background: rgba(255,255,255,0.8);
+      text-transform: uppercase;
     }
 
     .theme-toggle {
@@ -187,20 +133,6 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-    }
-
-    .theme-toggle i {
-      font-size: 12px;
-    }
-
-    :root[data-theme="light"] .theme-toggle {
-      background: rgba(255,255,255,0.9);
-    }
-
-    .theme-toggle:hover {
-      border-color: rgba(212,175,55,0.7);
-      color: var(--accent);
     }
 
     .divider {
@@ -213,54 +145,36 @@
       padding: 12px;
       background: linear-gradient(135deg, rgba(212,175,55,0.18), rgba(0,0,0,0.85));
       border-radius: 20px;
-      margin-bottom: 18px;
       border: 1px solid rgba(212,175,55,0.35);
       display: flex;
       gap: 12px;
       align-items: center;
-    }
-    .highlight i {
-      font-size: 20px;
-      color: var(--accent);
-    }
-    .highlight p {
-      font-size: 13px;
+      margin-bottom: 18px;
     }
 
-    /* Buttons */
     .btn {
       display: block;
       width: 100%;
       text-align: center;
-      text-decoration: none;
       padding: 12px 16px;
       border-radius: 999px;
       font-size: 14px;
       margin-bottom: 10px;
       color: var(--text-main);
-      border: 1px solid transparent;
-      transition: .13s ease;
       background: rgba(0,0,0,0.5);
+      border: 1px solid transparent;
       cursor: pointer;
-    }
-
-    .btn i {
-      margin-right: 8px;
-      font-size: 16px;
     }
 
     .btn:hover {
       transform: translateY(-2px);
       border-color: rgba(212,175,55,0.5);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.9);
     }
 
     .btn-primary {
       background: linear-gradient(135deg, #f3d26a, #b8861a);
       color: #111;
       font-weight: 600;
-      border: none;
-      box-shadow: 0 14px 26px rgba(0,0,0,0.8);
     }
 
     .btn-small {
@@ -276,103 +190,45 @@
       letter-spacing: .16em;
     }
 
-    /* Social Grid */
     .social-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
     }
 
-    /* Address Blocks */
     .address {
       background: var(--card-bg);
       border-radius: 14px;
       border: 1px solid var(--border-soft);
       padding: 12px;
       margin-bottom: 10px;
-      transition: background 0.25s ease, border-color 0.25s ease;
-    }
-    .address h3 {
-      color: var(--accent);
-      font-size: 13px;
-      margin-bottom: 3px;
-      font-weight: 500;
-    }
-    .address p {
-      font-size: 12px;
-      line-height: 1.45;
-      color: var(--text-muted);
-      margin-bottom: 8px;
     }
 
-    /* QR Section */
-    .qr-section {
-      margin-top: 14px;
-      text-align: center;
-    }
-
-    .qr-wrapper {
-      margin-top: 8px;
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 12px;
-      border-radius: 16px;
-      border: 1px dashed var(--border-soft);
-      background: rgba(0, 0, 0, 0.35);
-    }
-
-    :root[data-theme="light"] .qr-wrapper {
-      background: rgba(255, 255, 255, 0.7);
-    }
-
-    .qr-wrapper img {
-      width: 150px;
-      height: 150px;
-      border-radius: 12px;
-    }
-
-    .qr-wrapper span {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    /* Footer Note */
     .footer {
-      margin-top: 16px;
+      margin-top: 20px;
       text-align: center;
       font-size: 11px;
       color: var(--text-muted);
-    }
-    .footer span {
-      color: var(--accent);
-    }
-
-    @media (max-width: 380px) {
-      .title h1 {
-        font-size: 16px;
-      }
-      .card-inner {
-        padding: 20px 14px 24px;
-      }
     }
   </style>
 </head>
 
 <body>
 <div class="wrapper">
-
   <div class="card">
     <div class="card-inner">
 
-      <!-- Header -->
+      <!-- ⭐ HEADER WITH LOGO ⭐ -->
       <div class="header">
-        <div class="logo">DC</div>
+        <div class="logo">
+          <img class="logo-img" src="https://detailcity.com.my/wp-content/uploads/2023/11/Logo-399-x-83px.png" />
+        </div>
+
         <div class="title">
           <h1>Detail City Car Studio</h1>
           <div class="tagline">Premium Auto Detailing • Johor & KL</div>
         </div>
+
         <div class="header-right">
           <button class="theme-toggle" id="themeToggle">
             <i class="fa-regular fa-moon"></i>
@@ -390,12 +246,11 @@
         <p><strong>Tap to book your detailing session.</strong><br>WhatsApp us for pricing & appointments.</p>
       </div>
 
-      <!-- Main Buttons -->
+      <!-- MAIN BUTTONS -->
       <a class="btn btn-primary" href="https://wa.me/message/444HENG6ID4ZD1" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i> WhatsApp Booking (Johor & KL)
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp Booking
       </a>
 
-      <!-- New Official Website Button -->
       <a class="btn btn-primary" href="https://detailcity.com.my" target="_blank">
         <i class="fa-solid fa-globe"></i> Visit Our Website
       </a>
@@ -404,165 +259,102 @@
         <i class="fa-solid fa-phone"></i> Call: 011-11472671
       </a>
 
-      <!-- Social Section -->
+      <!-- SOCIALS -->
       <div class="section-title">Social Media</div>
-
       <div class="social-grid">
-        <a class="btn btn-small" href="https://www.instagram.com/detailcity_car_studio?igsh=ZnBnN3A1M2F6ZTV5" target="_blank">
-          <i class="fa-brands fa-instagram"></i> Johor IG
-        </a>
-        <a class="btn btn-small" href="https://www.instagram.com/detailcitycarstudiokualalumpur?igsh=MXg3NnpoN2lrMmNtdw==" target="_blank">
-          <i class="fa-brands fa-instagram"></i> KL IG
-        </a>
-
-        <a class="btn btn-small" href="https://www.facebook.com/share/1BtioyHdfw/?mibextid=wwXIfr" target="_blank">
-          <i class="fa-brands fa-facebook"></i> Johor FB
-        </a>
-        <a class="btn btn-small" href="https://www.facebook.com/share/17p97so9Ei/?mibextid=wwXIfr" target="_blank">
-          <i class="fa-brands fa-facebook"></i> KL FB
-        </a>
+        <a class="btn btn-small" href="https://www.instagram.com/detailcity_car_studio" target="_blank"><i class="fa-brands fa-instagram"></i> Johor IG</a>
+        <a class="btn btn-small" href="https://www.instagram.com/detailcitycarstudiokualalumpur" target="_blank"><i class="fa-brands fa-instagram"></i> KL IG</a>
+        <a class="btn btn-small" href="https://www.facebook.com/share/1BtioyHdfw" target="_blank"><i class="fa-brands fa-facebook"></i> Johor FB</a>
+        <a class="btn btn-small" href="https://www.facebook.com/share/17p97so9Ei" target="_blank"><i class="fa-brands fa-facebook"></i> KL FB</a>
       </div>
 
-      <a class="btn" href="https://www.tiktok.com/@detailcitycarstudio?_r=1&_t=ZS-91ukMqpp51h" target="_blank">
+      <a class="btn" href="https://www.tiktok.com/@detailcitycarstudio" target="_blank">
         <i class="fa-brands fa-tiktok"></i> TikTok
       </a>
 
-      <!-- Locations -->
+      <!-- LOCATIONS -->
       <div class="section-title">Our Locations</div>
 
       <div class="address">
-        <h3><i class="fa-solid fa-location-dot"></i> Johor – Impian Emas Branch</h3>
-        <p>235, Jalan Impian Emas 22,<br>Taman Impian Emas,<br>81300 Skudai, Johor.</p>
-        <button
-          type="button"
-          class="btn btn-small"
-          onclick="openMapChooser('235, Jalan Impian Emas 22, Taman Impian Emas, 81300 Skudai, Johor')">
-          <i class="fa-solid fa-map"></i> Open Maps
-        </button>
+        <strong>Johor – Impian Emas</strong>
+        <p>235, Jalan Impian Emas 22, Taman Impian Emas, 81300 Skudai, Johor.</p>
+        <button class="btn btn-small" onclick="openMapChooser('235 Jalan Impian Emas 22 Skudai Johor')">Open Maps</button>
       </div>
 
       <div class="address">
-        <h3><i class="fa-solid fa-location-dot"></i> Kuala Lumpur Branch</h3>
-        <p>4, Batu 5, Jalan Sultan Azlan Shah,<br>Kampung Batu,<br>51200 Kuala Lumpur.</p>
-        <button
-          type="button"
-          class="btn btn-small"
-          onclick="openMapChooser('4, Batu 5, Jalan Sultan Azlan Shah, Kampung Batu, 51200 Kuala Lumpur')">
-          <i class="fa-solid fa-map"></i> Open Maps
-        </button>
+        <strong>Kuala Lumpur Branch</strong>
+        <p>4, Batu 5, Jalan Sultan Azlan Shah, Kampung Batu, 51200 Kuala Lumpur.</p>
+        <button class="btn btn-small" onclick="openMapChooser('4 Batu 5 Jalan Sultan Azlan Shah Kuala Lumpur')">Open Maps</button>
       </div>
 
-      <!-- QR Code Section -->
-      <div class="qr-section">
-        <div class="section-title">Quick Access QR</div>
-        <div class="qr-wrapper">
-          <img id="qrImage" alt="QR code to this page" />
-          <span>Scan to open this page directly.</span>
-        </div>
+      <!-- QR -->
+      <div class="section-title">Quick Access QR</div>
+      <div class="qr-wrapper" style="text-align:center;">
+        <img id="qrImage" style="width:150px;height:150px;border-radius:12px;" />
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">Scan to open</div>
       </div>
 
-      <!-- Footer -->
       <div class="footer">
         Tap • Book • Shine <br>
-        <span>Detail City Car Studio</span>
+        <span style="color:var(--accent)">Detail City Car Studio</span>
       </div>
 
     </div>
   </div>
 </div>
 
-<!-- MAP CHOOSER MODAL -->
+<!-- MAP MODAL -->
 <div id="mapModal" style="
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.6);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-">
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  background:rgba(0,0,0,0.6);
+  display:none;align-items:center;justify-content:center;z-index:9999;">
   <div style="
-    background: var(--card-bg);
-    padding: 20px;
-    border-radius: 18px;
-    width: 280px;
-    border: 1px solid var(--border-soft);
-    text-align: center;
-  ">
-    <h3 style="margin-bottom: 12px; color: var(--accent); font-size:14px">
-      Open navigation with:
-    </h3>
-
-    <div style="display:flex; flex-direction:column; gap:8px;">
-      <a id="openGoogle" class="btn btn-small" style="margin:0">Google Maps</a>
-      <a id="openApple" class="btn btn-small" style="margin:0">Apple Maps</a>
-      <a id="openWaze" class="btn btn-small" style="margin:0">Waze</a>
-    </div>
-
-    <button onclick="closeMapModal()" class="btn btn-small" style="margin-top:12px; opacity:0.7">
-      Cancel
-    </button>
+    background:var(--card-bg);
+    padding:20px;
+    border-radius:18px;
+    width:280px;
+    border:1px solid var(--border-soft);
+    text-align:center;">
+    <h3 style="margin-bottom:12px;color:var(--accent);font-size:14px;">Open navigation with</h3>
+    <a id="openGoogle" class="btn btn-small" style="margin-bottom:8px;">Google Maps</a>
+    <a id="openApple" class="btn btn-small" style="margin-bottom:8px;">Apple Maps</a>
+    <a id="openWaze" class="btn btn-small">Waze</a>
+    <button onclick="closeMapModal()" class="btn btn-small" style="margin-top:12px;opacity:0.7;">Cancel</button>
   </div>
 </div>
 
 <script>
-  // Theme toggle with localStorage
-  (function () {
-    const root = document.documentElement;
-    const toggle = document.getElementById("themeToggle");
-    const label = document.getElementById("themeLabel");
+  // theme toggle
+  const toggle=document.getElementById("themeToggle");
+  const label=document.getElementById("themeLabel");
+  const root=document.documentElement;
+  toggle.onclick=()=>{
+    const cur=root.getAttribute("data-theme")==="dark"?"dark":"light";
+    const next=cur==="dark"?"light":"dark";
+    root.setAttribute("data-theme",next);
+    label.textContent=next==="light"?"Light":"Dark";
+    localStorage.setItem("dc-theme",next);
+  };
+  const saved=localStorage.getItem("dc-theme")||"dark";
+  root.setAttribute("data-theme",saved);
+  label.textContent=saved==="light"?"Light":"Dark";
 
-    const savedTheme = localStorage.getItem("dc-theme");
-    if (savedTheme === "light" || savedTheme === "dark") {
-      root.setAttribute("data-theme", savedTheme);
-      label.textContent = savedTheme === "light" ? "Light" : "Dark";
-    } else {
-      // Default to dark
-      root.setAttribute("data-theme", "dark");
-      label.textContent = "Dark";
-    }
+  // QR
+  const img=document.getElementById("qrImage");
+  img.src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data="+encodeURIComponent(window.location.href);
 
-    toggle.addEventListener("click", () => {
-      const current = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
-      const next = current === "dark" ? "light" : "dark";
-      root.setAttribute("data-theme", next);
-      localStorage.setItem("dc-theme", next);
-      label.textContent = next === "light" ? "Light" : "Dark";
-    });
-  })();
-
-  // Auto-generate QR code for the current page URL
-  (function () {
-    const img = document.getElementById("qrImage");
-    if (!img) return;
-    const url = window.location.href;
-    const apiUrl = "https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=" + encodeURIComponent(url);
-    img.src = apiUrl;
-  })();
-
-  // Map chooser logic
-  function openMapChooser(address) {
-    const modal = document.getElementById("mapModal");
-    const encoded = encodeURIComponent(address);
-
-    // Deep Links for different apps
-    document.getElementById("openGoogle").href =
-      "https://www.google.com/maps/search/?api=1&query=" + encoded;
-
-    document.getElementById("openApple").href =
-      "maps://?q=" + encoded; // iPhone Apple Maps
-
-    document.getElementById("openWaze").href =
-      "https://waze.com/ul?q=" + encoded;
-
-    modal.style.display = "flex";
+  // map chooser
+  function openMapChooser(address){
+    const encoded=encodeURIComponent(address);
+    document.getElementById("openGoogle").href="https://www.google.com/maps/search/?api=1&query="+encoded;
+    document.getElementById("openApple").href="maps://?q="+encoded;
+    document.getElementById("openWaze").href="https://waze.com/ul?q="+encoded;
+    document.getElementById("mapModal").style.display="flex";
   }
-
-  function closeMapModal() {
-    document.getElementById("mapModal").style.display = "none";
+  function closeMapModal(){
+    document.getElementById("mapModal").style.display="none";
   }
 </script>
 
 </body>
 </html>
-
