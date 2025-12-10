@@ -44,7 +44,11 @@
       padding: 30px 16px 50px;
       display: flex;
       justify-content: center;
-      transition: 0.25s ease;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    :root[data-theme="light"] body {
+      background: radial-gradient(circle at top, #f2f2f7 0, var(--bg) 55%);
     }
 
     .wrapper { width: 100%; max-width: 460px; }
@@ -63,8 +67,12 @@
       border-radius: 24px;
       padding: 24px 18px 28px;
       border: 1px solid var(--border-soft);
-      transition: 0.25s ease;
+      transition: background 0.25s ease, border-color 0.25s ease;
       position: relative;
+    }
+
+    :root[data-theme="light"] .card-inner {
+      background: radial-gradient(circle at top, #ffffff 0, #ececf5 70%);
     }
 
     .logo {
@@ -120,6 +128,12 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    :root[data-theme="light"] .theme-toggle {
+      background: rgba(255,255,255,0.9);
+      color: var(--text-muted);
     }
 
     .divider {
@@ -137,6 +151,17 @@
       gap: 12px;
       align-items: center;
       margin-bottom: 18px;
+      color: var(--text-main);
+    }
+
+    :root[data-theme="light"] .highlight {
+      background: linear-gradient(135deg, rgba(212,175,55,0.22), #fffbe8);
+      color: #1b1b23;
+    }
+
+    .highlight i {
+      font-size: 20px;
+      color: var(--accent);
     }
 
     .btn {
@@ -151,17 +176,42 @@
       background: rgba(0,0,0,0.5);
       border: 1px solid transparent;
       cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn i {
+      margin-right: 8px;
     }
 
     .btn:hover {
       transform: translateY(-2px);
       border-color: rgba(212,175,55,0.5);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.8);
     }
 
     .btn-primary {
       background: linear-gradient(135deg, #f3d26a, #b8861a);
       color: #111;
       font-weight: 600;
+      border: none;
+      box-shadow: 0 14px 26px rgba(0,0,0,0.8);
+    }
+
+    :root[data-theme="light"] .btn {
+      background: rgba(255,255,255,0.95);
+      color: var(--text-main);
+      border-color: rgba(0,0,0,0.06);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    }
+
+    :root[data-theme="light"] .btn:hover {
+      border-color: rgba(0,0,0,0.16);
+      box-shadow: 0 10px 18px rgba(0,0,0,0.16);
+    }
+
+    :root[data-theme="light"] .btn-primary {
+      box-shadow: 0 10px 20px rgba(0,0,0,0.18);
     }
 
     .btn-small {
@@ -189,6 +239,19 @@
       border: 1px solid var(--border-soft);
       padding: 12px;
       margin-bottom: 10px;
+      transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .address strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+
+    .address p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
     }
 
     .footer {
@@ -196,6 +259,20 @@
       text-align: center;
       font-size: 11px;
       color: var(--text-muted);
+    }
+
+    .footer span {
+      color: var(--accent);
+    }
+
+    .qr-wrapper {
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 380px) {
+      .card-inner { padding: 20px 14px 24px; }
+      .title h1 { font-size: 16px; }
     }
   </style>
 </head>
@@ -208,7 +285,7 @@
       <!-- HEADER -->
       <div class="header">
         <div class="logo">
-          <img class="logo-img" src="https://detailcity.com.my/wp-content/uploads/2023/11/Logo-399-x-83px.png" />
+          <img class="logo-img" src="https://detailcity.com.my/wp-content/uploads/2023/11/Logo-399-x-83px.png" alt="Detail City Logo" />
         </div>
 
         <div class="title">
@@ -275,14 +352,14 @@
 
       <!-- QR -->
       <div class="section-title">Quick Access QR</div>
-      <div class="qr-wrapper" style="text-align:center;">
-        <img id="qrImage" style="width:150px;height:150px;border-radius:12px;" />
+      <div class="qr-wrapper">
+        <img id="qrImage" style="width:150px;height:150px;border-radius:12px;" alt="QR to this page" />
         <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">Scan to open</div>
       </div>
 
       <div class="footer">
         Tap • Book • Shine <br>
-        <span style="color:var(--accent)">Detail City Car Studio</span>
+        <span>Detail City Car Studio</span>
       </div>
 
     </div>
@@ -311,34 +388,39 @@
 
 <script>
   // theme toggle
-  const toggle=document.getElementById("themeToggle");
-  const label=document.getElementById("themeLabel");
-  const root=document.documentElement;
-  toggle.onclick=()=>{
-    const cur=root.getAttribute("data-theme")==="dark"?"dark":"light";
-    const next=cur==="dark"?"light":"dark";
-    root.setAttribute("data-theme",next);
-    label.textContent=next==="light"?"Light":"Dark";
-    localStorage.setItem("dc-theme",next);
+  const toggle = document.getElementById("themeToggle");
+  const label = document.getElementById("themeLabel");
+  const root = document.documentElement;
+
+  const saved = localStorage.getItem("dc-theme") || "dark";
+  root.setAttribute("data-theme", saved);
+  label.textContent = saved === "light" ? "Light" : "Dark";
+
+  toggle.onclick = () => {
+    const cur = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    const next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    label.textContent = next === "light" ? "Light" : "Dark";
+    localStorage.setItem("dc-theme", next);
   };
-  const saved=localStorage.getItem("dc-theme")||"dark";
-  root.setAttribute("data-theme",saved);
-  label.textContent=saved==="light"?"Light":"Dark";
 
   // QR
-  const img=document.getElementById("qrImage");
-  img.src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data="+encodeURIComponent(window.location.href);
+  const img = document.getElementById("qrImage");
+  if (img) {
+    img.src = "https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=" +
+      encodeURIComponent(window.location.href);
+  }
 
   // map chooser
   function openMapChooser(address){
-    const encoded=encodeURIComponent(address);
-    document.getElementById("openGoogle").href="https://www.google.com/maps/search/?api=1&query="+encoded;
-    document.getElementById("openApple").href="maps://?q="+encoded;
-    document.getElementById("openWaze").href="https://waze.com/ul?q="+encoded;
-    document.getElementById("mapModal").style.display="flex";
+    const encoded = encodeURIComponent(address);
+    document.getElementById("openGoogle").href = "https://www.google.com/maps/search/?api=1&query=" + encoded;
+    document.getElementById("openApple").href = "maps://?q=" + encoded;
+    document.getElementById("openWaze").href = "https://waze.com/ul?q=" + encoded;
+    document.getElementById("mapModal").style.display = "flex";
   }
   function closeMapModal(){
-    document.getElementById("mapModal").style.display="none";
+    document.getElementById("mapModal").style.display = "none";
   }
 </script>
 
